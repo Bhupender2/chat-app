@@ -1,0 +1,25 @@
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Debugging and development files
+.DS_Store
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+Thumbs.db
+
+# Socket.IO generated files (if any)
+/socket.io/
+
+# Other generated files or directories
+dist/
+coverage/
