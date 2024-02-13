@@ -16,7 +16,7 @@ const addUser = ({ id, name, room }) => {
   ); // this find method will us a boolean value that the user already exist or not
   if (existingUser) return { error: "Username is taken" };
   const user = { id, name, room }; // its an object shorthand
-
+  console.log("user", user);
   users.push(user);
 
   return { user };
@@ -25,16 +25,21 @@ const addUser = ({ id, name, room }) => {
 const removeUser = (id) => {
   const index = users.findIndex((user) => user.id === id); // if this statement is true which means the id we are looking for exist and findIndex will return the index of the element if it find the element which satisfies the condition otherwise it returns -1
   if (index !== -1) {
-    return users.splice(index, 1)[0]; // it will return the remove element  coz splice return the arryay and we want the first element only
+    return users.splice(index, 1)[0]; // it will return the remove element  coz splice return the arryay and we want the result element only
   }
 };
 
-const getUser = (id) => {
-  users.find((user) => user.id === id); // it will basically return the user
-};
+// const getUser = (id) => {
+//   const currentUser = users.filter((user) => {
+//     const result = user.id === id;
+//     return result;
+//   }); // it will basically return the user
+//   return currentUser;
+// };
+const getUser = (id) => users.find((user) => user.id === id);
 
 const getUserInRoom = (room) => {
-  users.filter((user) => user.room === room); // it return all the users from that room
+  return users.filter((user) => user.room === room); // it return all the users from that room
 };
 
 module.exports = { addUser, removeUser, getUser, getUserInRoom }; // this is how you export function and variable module.exports is commonly used in Node.js for exporting multiple functions or variables as an object. and ES6 modules only used in FRONTEND DEV remember that

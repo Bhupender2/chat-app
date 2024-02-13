@@ -5,17 +5,23 @@ import { useLocation } from "react-router";
 
 import io from "socket.io-client";
 import "./Chat.css";
+import InfoBar from "../InfoBar/InfoBar";
+import Input from "../Input/Input";
+import Messages from "../Messages/Messages";
+import TextContainer from "../TextContainer/TextContainer";
 
 let socket;
 
 export default function Chat() {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
+  const [users, setUsers] = useState('');
   const [message, setMessage] = useState(""); // to specify every single message
   const [messages, setMessages] = useState([]); // keep track of all the messages
   const ENDPOINT = "http://localhost:5000";
   const location = useLocation(); //we dont pass it as a prop now ..now we use useLocation() instead of passing it as a prop
   // this is coming from react router and we are recieving it as a prop
+  console.log(users)
   useEffect(() => {
     const { name, room } = queryString.parse(location.search); // it will give us the credentials that we input
 
@@ -38,11 +44,16 @@ export default function Chat() {
     // console.log(name, room);
     // console.log(location.search); // it will only give us the parameter not the full url
   }, [ENDPOINT, location.search]); // Ensure useEffect runs when the value in this array changes only then it will rerender the useEffect otherwise not
+
   useEffect(() => {
     // this useEffect is for handling messages
-    socket.on("message", (message) => {
+    socket.once("message", (message) => {
       setMessages((messages) => [...messages, message]);
     });
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
+
   }, [messages]); // only run this when messages array changes
 
   // function for sending messages
@@ -52,17 +63,27 @@ export default function Chat() {
       socket.emit("sendMessage", message, () => setMessage("")); // after message is send it will clear the input field
     }
   };
-  console.log(message, messages); // lets see the messages
+  //  console.log(message," ---this is the message we are typing"); // lets see the messages
+  console.log(message, messages);
 
   return (
     <div className="outerContainer">
       <div className="container">
-        <input
+        <InfoBar room={room} />
+        <Messages messages={messages} name={name} />
+        <Input
+          message={message}
+          setMessage={setMessage}
+          sendMessage={sendMessage}
+        />
+        {/* <input
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
-        />
+        /> */}
+
       </div>
+      <TextContainer users={users}/>
     </div>
   );
 }
