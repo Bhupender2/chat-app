@@ -18,7 +18,7 @@ export default function Chat() {
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState(""); // to specify every single message
   const [messages, setMessages] = useState([]); // keep track of all the messages
-  const ENDPOINT = "http://localhost:5000";
+  const ENDPOINT = "https://react-chat-app-q3el.onrender.com/";
   const location = useLocation(); //we dont pass it as a prop now ..now we use useLocation() instead of passing it as a prop
   // this is coming from react router and we are recieving it as a prop
   console.log(users)
