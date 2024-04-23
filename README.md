@@ -1,6 +1,6 @@
 # Chat App | React, Socket.io, Express.js, CORS
 
-![Chat App Demo]([https://github.com/Bhupender2/chat-app/blob/main/client/src/images/chatapp2image.png])
+![Chat App Demo](https://github.com/Bhupender2/chat-app/blob/main/client/src/images/chatapp2image.png)
 
 Welcome to our Chat App! This project consists of two main components: a client-side application built with React and a server-side application using Socket.io and Express.js.
 
