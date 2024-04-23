@@ -1,6 +1,6 @@
 # Chat App | React, Socket.io, Express.js, CORS
 
-![Chat App Demo](https://github.com/Bhupender2/chat-app/blob/main/client/src/images/chatapp2image.png)
+<img src="https://github.com/Bhupender2/chat-app/blob/main/client/src/images/chatapp2image.png" width="400" alt="chat-demo">
 
 Welcome to our Chat App! This project consists of two main components: a client-side application built with React and a server-side application using Socket.io and Express.js.
 
@@ -37,15 +37,11 @@ Welcome to our Chat App! This project consists of two main components: a client-
 2. Install dependencies: `npm install`
 3. Start the server: `npm start`
 
-### ChatGPT Integration
-
-- This project includes ChatGPT, a language model developed by OpenAI, to enhance the chat experience and provide intelligent responses.
-
 ## Demo
 
-Visit our [website](website_url_here) to see the Chat App in action!
+Visit our [website]([website_url_here](https://chat-app-five-teal.vercel.app/)) to see the Chat App in action!
 
-![Chat App Demo](https://example.com/path/to/demo_image.png)
+![Chat App Demo](https://github.com/Bhupender2/chat-app/blob/main/client/src/images/chatapp1image.png)
 
 ## Contributing
 
